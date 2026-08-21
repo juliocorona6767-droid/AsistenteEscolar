@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
     public class Bridge {
         @JavascriptInterface public void scheduleAlarm(int h,int m,boolean enabled){
             getSharedPreferences(PREFS,MODE_PRIVATE).edit().putInt(KEY_HOUR,h).putInt(KEY_MINUTE,m).putBoolean(KEY_ENABLED,enabled).apply();
-            if(enabled) scheduleAlarm(MainActivity.this,h,m,true); else cancelAlarm(MainActivity.this);
+            if(enabled) MainActivity.scheduleAlarm(MainActivity.this,h,m,true); else MainActivity.cancelAlarm(MainActivity.this);
         }
         @JavascriptInterface public void stopAlarm(String message){
             AlarmService.stop(MainActivity.this);
